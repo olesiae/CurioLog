@@ -13,16 +13,13 @@
 - Favorites are stored locally with `UserDefaults`
 - Dynamic gradient backgrounds and clean card-style UI
 
-  <p align="center">
+  
   <img src="https://github.com/user-attachments/assets/b67c50b4-585d-4ddc-a685-29bf1f3d1f79" width="250"/>
   <img src="https://github.com/user-attachments/assets/79372811-5e47-4b1d-80ee-0c716a0a970a" width="250"/>
-</p>
 
-<p align="center">
+
   <b>Main Screen</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <b>Favorites</b>
-</p>
-
 
 ---
 
