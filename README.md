@@ -14,12 +14,17 @@
 - Dynamic gradient backgrounds and clean card-style UI
 
   
-  <img src="https://github.com/user-attachments/assets/b67c50b4-585d-4ddc-a685-29bf1f3d1f79" width="250"/>
-  <img src="https://github.com/user-attachments/assets/79372811-5e47-4b1d-80ee-0c716a0a970a" width="250"/>
+ <table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b67c50b4-585d-4ddc-a685-29bf1f3d1f79" width="250"/></td>
+    <td><img src="https://github.com/user-attachments/assets/79372811-5e47-4b1d-80ee-0c716a0a970a" width="250"/></td>
+  </tr>
+  <tr>
+    <td><b>Main Screen</b></td>
+    <td><b>Favorites</b></td>
+  </tr>
+</table>
 
-
-  <b>Main Screen</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>Favorites</b>
 
 ---
 
