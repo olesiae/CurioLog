@@ -14,20 +14,25 @@ final class FactViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
     @Published var isFavorite = false
+    
+    private let predictor = FactCategoryPredictor()
 
     func loadRandomFact() async {
         isLoading = true
         errorMessage = nil
 
         do {
-            let loadedFact = try await FactService.shared.fetchRandomFact()
-            self.fact = loadedFact
-            self.isFavorite = FavoritesStorage.shared.isFavorite(loadedFact)
-            
-        } catch {
-            self.errorMessage = error.localizedDescription
-            print("Error loadind a fact: \(error.localizedDescription)")
-        }
+                var loadedFact = try await FactService.shared.fetchRandomFact()
+
+                // Определяем категорию
+                let predictedCategory = predictor.predictCategory(for: loadedFact.text)
+                loadedFact.category = predictedCategory
+
+                self.fact = loadedFact
+                self.isFavorite = FavoritesStorage.shared.isFavorite(loadedFact)
+            } catch {
+                self.errorMessage = error.localizedDescription
+            }
 
         isLoading = false
     }

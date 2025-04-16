@@ -54,7 +54,17 @@ struct FavoritesView: View {
                 Text("This action cannot be undone. All favorite facts will be deleted.")
             }
             .onAppear {
-                favoriteFacts = FavoritesStorage.shared.load()
+                var loaded = FavoritesStorage.shared.load()
+                    let predictor = FactCategoryPredictor()
+
+                    for index in loaded.indices {
+                        if loaded[index].category == .weird {
+                            let predicted = predictor.predictCategory(for: loaded[index].text)
+                            loaded[index].category = predicted
+                        }
+                    }
+
+                    favoriteFacts = loaded
             }
         }
     }

@@ -1,30 +1,35 @@
-//
-//  FavoritesStorage.swift
-//  CurioLog
-//
-//  Created by Олеся Ефимова on 9/4/25.
-//
-
 import Foundation
+
 final class FavoritesStorage {
     static let shared = FavoritesStorage()
 
     private let key = "favoriteFacts"
     private let defaults = UserDefaults.standard
+    private let predictor = FactCategoryPredictor()
 
     private init() {}
 
     func save(fact: Fact) {
+        
+        var factToSave = fact
+        if factToSave.category == .weird {
+            let predicted = predictor.predictCategory(for: factToSave.text)
+            factToSave.category = predicted
+            
+        }
+
         var current = load()
-        if !current.contains(fact) {
-            current.append(fact)
+        //  Сохраняем
+        if !current.contains(factToSave) {
+            current.append(factToSave)
             store(current)
+            
         }
     }
 
     func remove(fact: Fact) {
         var current = load()
-        current.removeAll { $0.text == fact.text } // сравнение по тексту
+        current.removeAll { $0.text == fact.text }
         store(current)
     }
 
@@ -34,7 +39,7 @@ final class FavoritesStorage {
             let decoded = try JSONDecoder().decode([Fact].self, from: data)
             return decoded
         } catch {
-            print("Error при загрузке избранного: \(error)")
+            print("Error loading favorites: \(error)")
             return []
         }
     }
@@ -48,7 +53,7 @@ final class FavoritesStorage {
             let data = try JSONEncoder().encode(facts)
             defaults.set(data, forKey: key)
         } catch {
-            print("Error при сохранении избранного: \(error)")
+            print("Error saving favorites: \(error.localizedDescription)")
         }
     }
 }
